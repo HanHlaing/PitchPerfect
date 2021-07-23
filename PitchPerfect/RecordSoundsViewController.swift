@@ -10,11 +10,18 @@ import AVFoundation
 
 class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     
-    var audioRecorder: AVAudioRecorder!
-
+    // MARK: Outlets
+    
     @IBOutlet weak var btnRecord: UIButton!
     @IBOutlet weak var lblRecording: UILabel!
     @IBOutlet weak var btnStopRecording: UIButton!
+    
+    // MARK: Variables/Constants
+    
+    var audioRecorder: AVAudioRecorder!
+    let identifierStopRecording = "stopRecording"
+    
+    // MARK: Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,14 +70,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         
         if flag {
-            performSegue(withIdentifier: "stopRecording", sender: audioRecorder.url)
+            performSegue(withIdentifier: identifierStopRecording, sender: audioRecorder.url)
         } else {
             print("Recording was not successful")
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "stopRecording" {
+        if segue.identifier == identifierStopRecording {
             let playSoundsVC = segue.destination as! PlaySoundsViewController
             let recordedAudioURL = sender as! URL
             playSoundsVC.recordedAudioURL = recordedAudioURL

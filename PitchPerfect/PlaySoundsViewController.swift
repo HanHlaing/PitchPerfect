@@ -20,6 +20,8 @@ class PlaySoundsViewController: UIViewController {
     @IBOutlet weak var btnReverb: UIButton!
     @IBOutlet weak var btnStop: UIButton!
     
+    // MARK: Variables/Constants
+    
     var recordedAudioURL: URL!
     var audioFile: AVAudioFile!
     var audioEngine: AVAudioEngine!
@@ -27,6 +29,23 @@ class PlaySoundsViewController: UIViewController {
     var stopTimer: Timer!
     
     enum ButtonType: Int { case slow = 0, fast, chipmunk, vader, echo, reverb}
+    
+    // MARK: Lifecycle methods
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupAudio()
+        adjustButtonImageSizes()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureUI(.notPlaying)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        stopAudio()
+    }
     
     // MARK: Actions
 
@@ -54,15 +73,4 @@ class PlaySoundsViewController: UIViewController {
         stopAudio()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupAudio()
-        adjustButtonImageSizes()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        configureUI(.notPlaying)
-    }
-
 }
