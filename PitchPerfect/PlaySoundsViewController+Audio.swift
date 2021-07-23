@@ -162,6 +162,21 @@ extension PlaySoundsViewController: AVAudioPlayerDelegate {
         btnReverb.isEnabled = enabled
     }
     
+    func adjustButtonImageSizes() {
+         btnSnail.contentMode = .center
+         btnSnail.imageView?.contentMode = .scaleAspectFit
+         btnChipmunk.contentMode = .center
+         btnChipmunk.imageView?.contentMode = .scaleAspectFit
+         btnRabbit.contentMode = .center
+         btnRabbit.imageView?.contentMode = .scaleAspectFit
+         btnVader.contentMode = .center
+         btnVader.imageView?.contentMode = .scaleAspectFit
+         btnEcho.contentMode = .center
+         btnEcho.imageView?.contentMode = .scaleAspectFit
+         btnReverb.contentMode = .center
+         btnReverb.imageView?.contentMode = .scaleAspectFit
+    }
+    
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Alerts.DismissAlert, style: .default, handler: nil))
