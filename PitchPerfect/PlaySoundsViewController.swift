@@ -11,6 +11,14 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     
+    @IBOutlet weak var btnSnail: UIButton!
+    @IBOutlet weak var btnRabbit: UIButton!
+    @IBOutlet weak var btnChipmunk: UIButton!
+    @IBOutlet weak var btnVader: UIButton!
+    @IBOutlet weak var btnEcho: UIButton!
+    @IBOutlet weak var btnReverb: UIButton!
+    @IBOutlet weak var btnStop: UIButton!
+    
     var recordedAudioURL: URL!
     var audioFile: AVAudioFile!
     var audioEngine: AVAudioEngine!
@@ -23,15 +31,5 @@ class PlaySoundsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
